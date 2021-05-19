@@ -17,12 +17,26 @@
 	"workspaceFolder": "/workspace",
 	// Set *default* container specific settings.json values on container create.
 	"settings": {
-		"terminal.integrated.defaultProfile.linux": null
+		"terminal.integrated.defaultProfile.linux": null,
+		"[ruby]": {
+			"editor.formatOnSave": true
+		},
+		"ruby.intellisense": "rubyLocate",
+		"ruby.format": "rubocop",
+		"ruby.useLanguageServer": true,
+		"solargraph.externalServer": {
+			"host": "solargraph",
+			"port": 7658
+		},
+		"solargraph.transport": "external",
+		"solargraph.definitions": true,
+		"solargraph.diagnostics": true
 	},
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
 		"rebornix.ruby",
-		"redhat.vscode-yaml"
+		"redhat.vscode-yaml",
+		"castwide.solargraph"
 	]
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],

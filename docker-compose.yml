@@ -6,7 +6,7 @@ services:
       - dbdata:/var/lib/postgresql/data:cached
     environment:
         POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-  app:
+  app: &app
     build: 
       context: .
       dockerfile: ./docker/app/Dockerfile
@@ -41,6 +41,13 @@ services:
       - "3001:3000"
     depends_on:
       - app
+
+  solargraph:
+    <<: *app
+    command: bundle exec solargraph socket --host=0.0.0.0 --port=7658
+    ports:
+      - "8091:7658"
+    links: [] 
 
 volumes:
   dbdata:

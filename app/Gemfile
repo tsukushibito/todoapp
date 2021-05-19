@@ -44,3 +44,9 @@ gem 'graphql'
 group :development, :test do
   gem 'graphiql-rails'
 end
+
+# Development
+group :development do
+  gem 'rubocop'
+  gem 'solargraph'
+end
