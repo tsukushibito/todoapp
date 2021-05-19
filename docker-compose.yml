@@ -18,9 +18,10 @@ services:
         - BUNDLER_VERSION=${APP_BUNDLER_VERSION}
     environment:
         POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: sh -c "bundle install && rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - ./app:/app:cached
+      - app-bundle:/usr/local/bundle
     ports:
       - "3000:3000"
     depends_on:
@@ -32,9 +33,10 @@ services:
       dockerfile: ./docker/web/Dockerfile
       args:
         - NODE_VERSION=${WEB_NODE_VERSION}
-    command: sh -c "yarn start"
+    command: sh -c "yarn install --check-files && yarn start"
     volumes:
       - ./web:/web:cached
+      - web-node-module:/web/node_modules
     ports:
       - "3001:3000"
     depends_on:
@@ -42,3 +44,5 @@ services:
 
 volumes:
   dbdata:
+  app-bundle:
+  web-node-module:
