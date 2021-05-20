@@ -47,6 +47,7 @@ end
 
 # Development
 group :development do
+  gem 'debase'
   gem 'rubocop'
-  gem 'solargraph'
+  gem 'ruby-debug-ide'
 end

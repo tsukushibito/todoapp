@@ -35,3 +35,10 @@ services:
 
     # Overrides default command so things don't shut down after the process ends.
     # command: /bin/sh -c "while sleep 1000; do :; done"
+
+    command: sh -c "bundle install && rm -f tmp/pids/server.pid && bundle exec rdebug-ide --host 0.0.0.0 --port 1234 -- bin/rails s -p 3000 -b '0.0.0.0'"
+    ports:
+      - "1234:1234"
+      - "3000:3000"
+      - "26162:26162"
+

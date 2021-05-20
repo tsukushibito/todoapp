@@ -14,7 +14,7 @@
 	"service": "app",
 	// The optional 'workspaceFolder' property is the path VS Code should open by default when
 	// connected. This is typically a file mount in .devcontainer/docker-compose.yml
-	"workspaceFolder": "/workspace",
+	"workspaceFolder": "/app",
 	// Set *default* container specific settings.json values on container create.
 	"settings": {
 		"terminal.integrated.defaultProfile.linux": null,
@@ -30,13 +30,14 @@
 		},
 		"solargraph.transport": "external",
 		"solargraph.definitions": true,
-		"solargraph.diagnostics": true
+		"solargraph.diagnostics": true,
 	},
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
 		"rebornix.ruby",
 		"redhat.vscode-yaml",
-		"castwide.solargraph"
+		"castwide.solargraph",
+		"connorshea.vscode-ruby-test-adapter"
 	]
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],

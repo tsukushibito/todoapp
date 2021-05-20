@@ -43,8 +43,16 @@ services:
       - app
 
   solargraph:
-    <<: *app
-    command: bundle exec solargraph socket --host=0.0.0.0 --port=7658
+    build:
+      context: .
+      dockerfile: ./docker/solargraph/Dockerfile
+      args:
+        - RUBY_VERSION=${APP_RUBY_VERSION}
+        - BUNDLER_VERSION=${APP_BUNDLER_VERSION}
+    command: sh -c "bundle install && bundle exec solargraph socket --host=0.0.0.0 --port=7658"
+    volumes:
+      - ./solargraph:/solargraph:cached
+      - solargraph-bundle:/usr/local/bundle
     ports:
       - "8091:7658"
     links: [] 
@@ -53,3 +61,4 @@ volumes:
   dbdata:
   app-bundle:
   web-node-module:
+  solargraph-bundle:
