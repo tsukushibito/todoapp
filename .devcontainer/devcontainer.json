@@ -31,6 +31,8 @@
 		"solargraph.transport": "external",
 		"solargraph.definitions": true,
 		"solargraph.diagnostics": true,
+		"rubyTestExplorer.logpanel": true,
+		"rubyTestExplorer.minitestCommand": "PARALLEL_WORKERS=1 rake"
 	},
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
