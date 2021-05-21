@@ -5,6 +5,20 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Rails server",
+            "type": "Ruby",
+            "request": "launch",
+            "cwd": "${workspaceRoot}",
+            "program": "${workspaceRoot}/bin/rails",
+            "args": [
+                "server",
+                "-p",
+                "3000",
+                "-b",
+                "0.0.0.0"
+            ]
+        },
+        {
             "name": "Listen for rdebug-ide",
             "type": "Ruby",
             "request": "attach",
