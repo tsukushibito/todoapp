@@ -40,7 +40,6 @@ services:
     command: sh -c "yarn install --check-files && yarn start"
     volumes:
       - ./web:/web:cached
-      - web-node-module:/web/node_modules
     ports:
       - "3001:3000"
     depends_on:
@@ -64,5 +63,4 @@ services:
 volumes:
   dbdata:
   app-bundle:
-  web-node-module:
   solargraph-bundle:
