@@ -35,6 +35,8 @@ services:
       dockerfile: ./docker/web/Dockerfile
       args:
         - NODE_VERSION=${WEB_NODE_VERSION}
+    environment: 
+      CHOKIDAR_USEPOLLING: "true"
     command: sh -c "yarn install --check-files && yarn start"
     volumes:
       - ./web:/web:cached
