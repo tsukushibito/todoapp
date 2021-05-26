@@ -9,6 +9,7 @@ import {
   useRecoilValue,
 } from 'recoil';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Home } from './pages/Home';
 import { TodoList } from './TodoList';
 
 export const ReactLogo = () => {
@@ -33,31 +34,11 @@ export const ReactLogo = () => {
 };
 
 function App() {
-  // return (
-  //   <RecoilRoot>
-  //     <div className="App">
-  //       <header className="App-header">
-  //         <img src={logo} className="App-logo" alt="logo" />
-  //         <p>
-  //           Edit <code>src/App.tsx</code> and save to reload.
-  //         </p>
-  //         <a
-  //           className="App-link"
-  //           href="https://reactjs.org"
-  //           target="_blank"
-  //           rel="noopener noreferrer"
-  //         >
-  //           Learn React
-  //         </a>
-  //       </header>
-  //     </div>
-  //   </RecoilRoot>
-  // );
   return (
     <RecoilRoot>
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={ReactLogo} />
+          <Route exact path="/" component={Home} />
           <Route exact path="/todolist" component={TodoList} />
         </Switch>
       </BrowserRouter>
