@@ -1,3 +1,5 @@
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
 import * as React from "react";
 import { useState } from "react";
 import { useSetRecoilState } from "recoil";
@@ -29,8 +31,8 @@ export const TodoItemCreator = () => {
 
     return (
         <div>
-            <input type="text" value={inputValue} onChange={onChange} />
-            <button onClick={addItem}>Add</button>
+            <TextField value={inputValue} onChange={onChange} />
+            <Button variant="contained" color="primary" onClick={addItem}>Add</Button>
         </div>
     );
 };

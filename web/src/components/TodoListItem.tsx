@@ -3,6 +3,14 @@ import { useRecoilState } from "recoil";
 import { TodoItem } from "../types";
 import { todoListState } from "../recoil/atoms";
 import { replaceItemAtIndex, removeItemAtIndex } from "../utils";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import Checkbox from "@material-ui/core/Checkbox";
+import ListItemText from "@material-ui/core/ListItemText";
+import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
+import IconButton from "@material-ui/core/IconButton";
+import CommentIcon from "@material-ui/icons/Comment";
+import DeleteIcon from "@material-ui/icons/Delete"
 
 type Props = {
     item: TodoItem;
@@ -40,15 +48,36 @@ export const TodoListItem = (props: Props) => {
         setTodoList(newList);
     };
 
+    // return (
+    //     <div>
+    //         <input type="text" value={item.text} onChange={editItemText} />
+    //         <input
+    //             type="checkbox"
+    //             checked={item.isComplete}
+    //             onChange={toggleItemCompletion}
+    //         />
+    //         <button onClick={deleteItem}>X</button>
+    //     </div>
+    // );
     return (
-        <div>
-            <input type="text" value={item.text} onChange={editItemText} />
-            <input
-                type="checkbox"
-                checked={item.isComplete}
-                onChange={toggleItemCompletion}
-            />
-            <button onClick={deleteItem}>X</button>
-        </div>
+        <ListItem key={item.id} role={undefined} dense button onClick={toggleItemCompletion}>
+            <ListItemIcon>
+                <Checkbox
+                    edge="start"
+                    checked={item.isComplete}
+                    tabIndex={-1}
+                    disableRipple
+                />
+            </ListItemIcon>
+            <ListItemText primary={item.text} />
+            <ListItemSecondaryAction>
+                <IconButton edge="end" aria-label="comments">
+                    <CommentIcon />
+                </IconButton>
+                <IconButton edge="end" aria-label="comments" onClick={deleteItem}>
+                    <DeleteIcon />
+                </IconButton>
+            </ListItemSecondaryAction>
+        </ListItem>
     );
 };

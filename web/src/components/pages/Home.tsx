@@ -1,39 +1,67 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
+import List from '@material-ui/core/List';
+import ListItem, { ListItemProps } from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import Divider from '@material-ui/core/Divider';
+import InboxIcon from '@material-ui/icons/Inbox';
+import DraftsIcon from '@material-ui/icons/Drafts';
+import Container from '@material-ui/core/Container';
+import { TodoList } from '../TodoList';
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-    },
-    menuButton: {
-        marginRight: theme.spacing(2),
-    },
-    title: {
-        flexGrow: 1,
-    },
-}));
+const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        root: {
+            width: '100%',
+            maxWidth: 1080,
+            backgroundColor: theme.palette.background.paper,
+        },
+    }),
+);
 
-export const Home = () => {
+function ListItemLink(props: ListItemProps<'a', { button?: true }>) {
+    return <ListItem button component="a" {...props} />;
+}
+
+function SimpleList() {
     const classes = useStyles();
+
     return (
         <div className={classes.root}>
-            <AppBar position="static">
-                <Toolbar>
-                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography variant="h6" className={classes.title}>
-                        News
-                    </Typography>
-                    <Button color="inherit">Login</Button>
-                </Toolbar>
-            </AppBar>
+            <List component="nav" aria-label="main mailbox folders">
+                <ListItem button>
+                    <ListItemIcon>
+                        <InboxIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Inbox" />
+                </ListItem>
+                <ListItem button>
+                    <ListItemIcon>
+                        <DraftsIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Drafts" />
+                </ListItem>
+            </List>
+            <Divider />
+            <List component="nav" aria-label="secondary mailbox folders">
+                <ListItem button>
+                    <ListItemText primary="Trash" />
+                </ListItem>
+                <ListItemLink href="#simple-list">
+                    <ListItemText primary="Spam" />
+                </ListItemLink>
+            </List>
         </div>
     );
+}
+
+function Home() {
+    return (
+        <Container maxWidth="md">
+            <TodoList></TodoList>
+        </Container>
+    );
 };
+
+export default Home;
