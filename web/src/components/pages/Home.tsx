@@ -24,38 +24,6 @@ function ListItemLink(props: ListItemProps<'a', { button?: true }>) {
     return <ListItem button component="a" {...props} />;
 }
 
-function SimpleList() {
-    const classes = useStyles();
-
-    return (
-        <div className={classes.root}>
-            <List component="nav" aria-label="main mailbox folders">
-                <ListItem button>
-                    <ListItemIcon>
-                        <InboxIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Inbox" />
-                </ListItem>
-                <ListItem button>
-                    <ListItemIcon>
-                        <DraftsIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Drafts" />
-                </ListItem>
-            </List>
-            <Divider />
-            <List component="nav" aria-label="secondary mailbox folders">
-                <ListItem button>
-                    <ListItemText primary="Trash" />
-                </ListItem>
-                <ListItemLink href="#simple-list">
-                    <ListItemText primary="Spam" />
-                </ListItemLink>
-            </List>
-        </div>
-    );
-}
-
 function Home() {
     return (
         <Container maxWidth="md">
